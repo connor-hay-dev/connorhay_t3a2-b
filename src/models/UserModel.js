@@ -32,5 +32,22 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema);
 
+const newUser = new User({
+  username: 'johnDoe',
+  email: 'johndoe@example.com',
+  password: 'securePassword123',
+});
+
+async function createUser() {
+  try {
+    const savedUser = await newUser.save();
+    console.log('User created successfully:', savedUser);
+  } catch (error) {
+    console.error('Error creating user:', error);
+  }
+}
+
+createUser();
+
 module.exports = User;
 

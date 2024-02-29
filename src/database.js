@@ -1,19 +1,3 @@
-// const mongoose = require('mongoose');
-
-
-// async function databaseConnector(databaseURL){
-//     await mongoose.connect(databaseURL);
-// }
-
-// async function databaseDisconnector(){
-//     await mongoose.connection.close();
-// }
-
-// module.exports = {
-//     databaseConnector,
-//     databaseDisconnector
-// }
-
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 dotenv.config();
@@ -31,3 +15,4 @@ const PORT = process.env.PORT;
 mongoose.connection.once('open', () => {
   console.log('MongoDB connection open');
 });
+

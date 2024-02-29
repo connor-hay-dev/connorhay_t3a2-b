@@ -1,95 +1,51 @@
-// // Make the .env data ready for use.
-// const dotenv = require('dotenv');
-// dotenv.config();
-
-// // Import the Express package and configure some needed data.
-// const express = require('express');
-// const app = express();
-// // If no process.env.X is found, assign a default value instead.
-// const HOST = process.env.HOST || 'localhost';
-// const PORT = process.env.PORT || 3000;
-
-// // Configure some basic Helmet settings on the server instance.
-// const helmet = require('helmet');
-// app.use(helmet());
-// app.use(helmet.permittedCrossDomainPolicies());
-// app.use(helmet.referrerPolicy());
-// app.use(helmet.contentSecurityPolicy({
-//     directives:{
-//         defaultSrc:["'self'"]
-//     }
-// }));
-
-// // Configure some basic CORS settings on the server instance.
-// // These origin values don't actually have to be anything - 
-// // this project exists without a front-end, but any front-end
-// // that should interact with this API should be listed in the 
-// // array of origins for CORS configuration.
-// const cors = require('cors');
-// var corsOptions = {
-//     origin: ["http://localhost:5000", "https://deployedApp.com"],
-//     optionsSuccessStatus: 200
-// }
-// app.use(cors(corsOptions));
-
-// // Configure some API-friendly request data formatting.
-// app.use(express.json());
-// app.use(express.urlencoded({extended: true}));
-
-// // Add a route just to make sure things work.
-// // This path is the server API's "homepage".
-// app.get('/', (request, response) => {
-//     response.json({
-//         message:"Hello world!"
-//     });
-// });
-
-
-
-
-// // Keep this route at the end of this file, only before the module.exports!
-// // A 404 route should only trigger if no preceding routes or middleware was run. 
-// // So, put this below where any other routes are placed within this file.
-// app.get('*', (request, response) => {
-//     response.status(404).json({
-//         message: "No route with that path found!",
-//         attemptedPath: request.path
-//     });
-// });
-
-// // Export everything needed to run the server.
-// module.exports = {
-//     HOST,
-//     PORT,
-//     app
-// }
-
-// // const mongoose = require('mongoose');
-
-// // mongoose.connect(process.env.ATLAS_URI)
-// //     .then(()=> {
-// //         app.listen(process.env.PORT, ()=> {
-// //             console.log("Listening on port", process.env.PORT)
-// //         })
-// //     })
-// //     .catch((error)=> {
-// //         console.log(error)
-// //     });
-
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('./models/UserModel.js'); // Import the User model
+
+// Require the database configuration to establish the connection
+require('./database');
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// A simple route to check the server is working
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost: ${port}`);
 });
+
+// A simple route to check the server is working
+app.get('/hello-world', (req, res) => {
+    res.send('Hello World!');
+  });
+
+app.post('/login', async (req, res) => {
+    try {
+      // Find the user by username
+      const user = await User.findOne({ username: req.body.username });
+      if (user) {
+        // Check if the password is correct
+        if (await bcrypt.compare(req.body.password, user.password)) {
+          // User authenticated, create a JWT
+          const token = jwt.sign(
+            { userId: user._id },
+            process.env.JWT_SECRET, // Use a secret from your environment variables
+            { expiresIn: '24h' } // Token expires in 24 hours
+          );
+          
+          // Send the token to the client
+          res.json({ token });
+        } else {
+          res.status(400).send('Invalid password');
+        }
+      } else {
+        res.status(404).send('User not found');
+      }
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
 
