@@ -1,39 +1,9 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const Progress = require('../schemas/ProgressSchema');
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
 
-const studyProgressSchema = new Schema({
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  subject: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  topics: [String],
-  topicsDetail: [{
-    topicName: String,
-    hoursSpent: Number
-  }],
-  wordsStudied: {
-    type: Number,
-    default: 0
-  },
-  hoursSpent: {
-    type: Number,
-    required: true
-  },
-  date: {
-    type: Date,
-    required: true,
-    default: Date.now
-  }
-}, {
-  timestamps: true, // Adds createdAt and updatedAt timestamps automatically
-});
+// // Create the model from the schema
+// const Progress = mongoose.model('StudyProgress', studyProgressSchema);
 
-const StudyProgress = mongoose.model('StudyProgress', studyProgressSchema);
-
-module.exports = StudyProgress;
+// // Export the model
+// module.exports = Progress;
