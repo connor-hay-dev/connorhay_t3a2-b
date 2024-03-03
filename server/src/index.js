@@ -1,7 +1,13 @@
-// require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: '../.env' });
+const app = require('./server');
+const connectDatabase = require('./database');
 
-// // Establish the database connection
-// require('./database');
+const PORT = process.env.PORT || 3000;
 
-// // Start the server
-// require('./server');
+// Connect to Database
+connectDatabase();
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
