@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-require('./userSchema')
+require('./UserModel')
 
 const postSchema = new Schema({
   userId: {

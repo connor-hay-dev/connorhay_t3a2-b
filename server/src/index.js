@@ -1,7 +1,7 @@
-require('dotenv').config({ path: '../.env' });
+// require('dotenv').config({ path: '../.env' });
 
-// Establish the database connection
-require('./database');
+// // Establish the database connection
+// require('./database');
 
-// Start the server
-require('./server');
+// // Start the server
+// require('./server');
