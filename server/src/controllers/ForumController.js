@@ -1,5 +1,6 @@
 const Post = require('../models/ForumModel'); // Adjust the path as necessary
 
+
 module.exports.createPost = async (req, res) => {
   try {
     const { title, content } = req.body;
