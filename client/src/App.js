@@ -4,7 +4,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import ForumPage from "./pages/Forum";
 import Pomodoro from "./pages/PomodoroTimer";
-// import { Goals } from "./Goals";
+import GoalsPage from "./pages/Goals";
 // import { Pomodoro } from "./PomodoroTimer";
 // import { ProgressTracker } from "./ProgressTracker";
 function App() {
@@ -16,8 +16,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forum" element={<ForumPage />} />
         <Route path="/pomodoro" element={<Pomodoro />} />
-        {/*         <Route path="/goals" element={<Goals />} />
- */}
+        <Route path="/goals" element={<GoalsPage />} />
       </Routes>
     </div>
   );

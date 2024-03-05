@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../pomodoro.css'
 
 const Pomodoro = () => {
   const [secondsLeft, setSecondsLeft] = useState(25 * 60);
@@ -32,11 +33,11 @@ const Pomodoro = () => {
   };
 
   return (
-    <div>
+    <div className="pomodoro-container">
       <h2>Pomodoro Timer</h2>
-      <div>{formatTime(secondsLeft)}</div>
-      <button onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>
-      <button onClick={reset}>Reset</button>
+      <div className="timer-display">{formatTime(secondsLeft)}</div>
+      <button className="button" onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>
+      <button className="button reset-button" onClick={reset}>Reset</button>
     </div>
   );
 };

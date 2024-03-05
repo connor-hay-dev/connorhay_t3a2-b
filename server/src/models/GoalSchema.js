@@ -2,7 +2,7 @@
 // const Schema = mongoose.Schema;
 
 // const goalSchema = new Schema({
-//   userId: {
+//     Author: {
 //     type: Schema.Types.ObjectId,
 //     ref: 'User',
 //     required: true
