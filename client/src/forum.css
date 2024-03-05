@@ -1,0 +1,73 @@
+Forum Page General Styles
+.forum-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Form Styles */
+  .submit-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .post-title-input, .post-content-textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .post-title-input {
+    height: 40px;
+  }
+  
+  .post-content-textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .submit-post-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-post-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Posts Display Styles */
+  .posts {
+    margin-top: 20px;
+  }
+  
+  .post {
+    background-color: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .post h3 {
+    margin-top: 0;
+  }
+  
+  /* Toast Container Customization (Optional) */
+  /* You might need to override the react-toastify defaults with more specific selectors or !important if needed */
+  .Toastify__toast--success {
+    background-color: #28a745 !important;
+  }
+  
+  .Toastify__toast--error {
+    background-color: #dc3545 !important;
+  }
+  
