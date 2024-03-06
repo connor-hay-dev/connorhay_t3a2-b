@@ -5,6 +5,7 @@ import Signup from "./pages/Signup"
 import ForumPage from "./pages/Forum";
 import Pomodoro from "./pages/PomodoroTimer";
 import GoalsPage from "./pages/Goals";
+import ProgressTrackerPage from "./pages/ProgressTracker";
 // import { Pomodoro } from "./PomodoroTimer";
 // import { ProgressTracker } from "./ProgressTracker";
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/forum" element={<ForumPage />} />
         <Route path="/pomodoro" element={<Pomodoro />} />
         <Route path="/goals" element={<GoalsPage />} />
+        <Route path="/progress" element={<ProgressTrackerPage />} />
       </Routes>
     </div>
   );

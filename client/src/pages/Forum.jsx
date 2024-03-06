@@ -216,6 +216,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import Sidebar from '../components/sidebar'; // Adjust the import path as necessary
 import "react-toastify/dist/ReactToastify.css";
 import '../forum.css';
 
@@ -223,7 +224,10 @@ const ForumPage = () => {
   const [cookies] = useCookies(['token']);
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState({ title: "", content: "" });
+  const [newPost, setNewPost] = useState({ title: "", content: ""});
+//   const [sidebarOpen, setSidebarOpen] = useState(false); // new
+const [sidebarOpen, setSidebarOpen] = useState(false);
+const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   useEffect(() => {
     // Redirect to login if no token is found
@@ -270,7 +274,7 @@ const ForumPage = () => {
         autoClose: 5000,
       });
       fetchPosts(); // Refresh posts after adding
-      setNewPost({ title: "", content: "" }); // Reset form
+      setNewPost({ title: "", content: "", author: ""}); // Reset form
     } catch (error) {
       toast.error("Failed to create post.", {
         position: "bottom-left",
@@ -278,10 +282,19 @@ const ForumPage = () => {
       });
     }
   };
+//   const toggleSidebar = () => setSidebarOpen(!sidebarOpen); //new
+//   const handleNavigation = (path) => {
+//   // Close the sidebar
+//   toggleSidebar();
+//   // Navigate to the path
+//   navigate(path);
+// };
 
   return (
     <>
       <div className="forum-page">
+        <div className="burger_menu" onClick={toggleSidebar}>☰</div>
+        <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />    
         <h2>Forum</h2>
         <form onSubmit={handleSubmit} className="submit-post-form">
           <input
@@ -308,6 +321,7 @@ const ForumPage = () => {
             <div key={post._id} className="post">
               <h3>{post.title}</h3>
               <p>{post.content}</p>
+              <p>By: {post.author}</p>
             </div>
           ))}
         </div>

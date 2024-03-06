@@ -23,9 +23,9 @@ body {
   align-items: center;
   background: linear-gradient(
     90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(143, 187, 204, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
+    rgb(19, 238, 176) 0%,
+    rgb(255, 255, 255) 35%,
+    rgb(0, 251, 255) 100%
   );
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

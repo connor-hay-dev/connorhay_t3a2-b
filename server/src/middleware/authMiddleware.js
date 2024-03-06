@@ -49,7 +49,7 @@
 //   });
 // };
 
-const User = require("../Models/UserModel");
+const User = require("../models/UserModel");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 

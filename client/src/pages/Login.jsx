@@ -42,8 +42,8 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
-        }, 1000);
+          navigate("/home"); // Updated this line to redirect to /home
+        }, 1000); // Adjust the timeout as needed
       } else {
         handleError(message);
       }

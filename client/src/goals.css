@@ -89,3 +89,23 @@
     background-color: #4cae4c;
   }
   
+  .goal-status {
+    display: inline-block;
+    padding: 3px 7px;
+    font-size: 12px;
+    border-radius: 4px;
+    color: white;
+    margin-top: 10px;
+}
+
+.goal-status.pending {
+    background-color: #f0ad4e; /* Orange for pending */
+}
+
+.goal-status.in-progress {
+    background-color: #5bc0de; /* Light blue for in progress */
+}
+
+.goal-status.completed {
+    background-color: #5cb85c; /* Green for completed */
+}
