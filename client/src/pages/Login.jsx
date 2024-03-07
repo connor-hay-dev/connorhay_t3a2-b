@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Heading from '../components/heading';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ const Login = () => {
 
   return (
     <div className="form_container">
-      <h2>Login Account</h2>
+      <Heading text="Login Account" />
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>

@@ -1,95 +1,118 @@
-/* General page styling */
+/* Reset and base styles */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Prevent body scrolling */
+}
+
+/* Full-page container adjustments */
 .goals-page {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-  }
-  
-  /* Form styling */
-  .submit-goal-form input,
-  .submit-goal-form textarea,
-  .submit-goal-button {
-    width: 90%;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding-top: 120px;
+    /* Adjust based on your form's actual height */
+    overflow-y: auto;
+    /* Enable scrolling within this container */
+    height: 100vh;
+    width: 70vw;
     box-sizing: border-box;
-  }
-  
-  .submit-goal-button {
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .submit-goal-button:hover {
-    background-color: #45a049;
-  }
-  
-  /* Goals container */
-  .goals {
+}
+
+/* Fixed form styling */
+.submit-goal-form {
+    position: fixed;
+    top: 100;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    /* Adjust based on your preference */
+    z-index: 10;
+    /* Ensure form is above other content */
+    background-color: #fff;
+    /* Match your design */
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Optional: adds depth */
+}
+
+/* Input and textarea adjustments for full-width and centering */
+.submit-goal-form input,
+.submit-goal-form textarea,
+.submit-goal-button {
+    display: block;
+    /* Stack vertically */
+    width: 80%;
+    /* Adjust width */
+    margin: 10px auto;
+    /* Center horizontally */
+    padding: 8px;
+}
+
+/* Scrollable goals grid */
+.goals {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    padding: 20px 0;
-  }
-  
-  /* Goal tile styling */
-  .goal {
+    padding: 0 20px;
+    /* Adjust based on layout */
+}
+
+
+/* Goal tile styling */
+.goal {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-  }
-  
-  .goal:hover {
+}
+
+.goal:hover {
     transform: translateY(-5px);
-  }
-  
-  .goal h3 {
+}
+
+.goal h3 {
     margin-top: 0;
     color: #333;
-  }
-  
-  .goal p {
+}
+
+.goal p {
     color: #666;
-  }
-  
-  /* Button styling within goal tiles */
-  .goal-doing-button,
-  .goal-done-button {
+}
+
+/* Button styling within goal tiles */
+.goal-doing-button,
+.goal-done-button {
     padding: 5px 10px;
     margin: 5px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .goal-doing-button {
+}
+
+.goal-doing-button {
     background-color: #f0ad4e;
     color: white;
-  }
-  
-  .goal-doing-button:hover {
+}
+
+.goal-doing-button:hover {
     background-color: #ec971f;
-  }
-  
-  .goal-done-button {
+}
+
+.goal-done-button {
     background-color: #5cb85c;
     color: white;
-  }
-  
-  .goal-done-button:hover {
+}
+
+.goal-done-button:hover {
     background-color: #4cae4c;
-  }
-  
-  .goal-status {
+}
+
+.goal-status {
     display: inline-block;
     padding: 3px 7px;
     font-size: 12px;
@@ -99,13 +122,16 @@
 }
 
 .goal-status.pending {
-    background-color: #f0ad4e; /* Orange for pending */
+    background-color: #f0ad4e;
+    /* Orange for pending */
 }
 
 .goal-status.in-progress {
-    background-color: #5bc0de; /* Light blue for in progress */
+    background-color: #5bc0de;
+    /* Light blue for in progress */
 }
 
 .goal-status.completed {
-    background-color: #5cb85c; /* Green for completed */
+    background-color: #5cb85c;
+    /* Green for completed */
 }

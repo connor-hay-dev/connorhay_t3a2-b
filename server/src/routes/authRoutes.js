@@ -3,7 +3,7 @@ const { createPost, getPosts } = require('../controllers/ForumController');
 const { userVerification } = require("../middleware/authMiddleware");
 const { createGoal } = require("../controllers/GoalController");
 const { getGoals } = require("../controllers/GoalController");
-const { createProgress, getAllProgress, getProgressById, updateProgress, deleteProgress } = require("../controllers/ProgressTrackerController");
+const { createProgress, getAllProgress, getProgressById, getAllProgressForUser, updateProgress, deleteProgress } = require("../controllers/ProgressTrackerController");
 // const { createProgress } = require('../controllers/ProgressTrackerController')
 // const pomodoroController = require('../controllers/PomodoroController');
 
@@ -29,6 +29,9 @@ router.patch('/progress/:id', userVerification, updateProgress);
 
 // Delete a specific study progress record by ID
 router.delete('/progress/:id', userVerification, deleteProgress);
+
+router.get('/progress', userVerification, getAllProgressForUser);
+
 
 
 // // Route to get all study progress records

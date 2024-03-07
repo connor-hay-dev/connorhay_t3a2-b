@@ -73,4 +73,14 @@ module.exports.updateProgress = async (req, res) => {
       res.status(500).json({ message: 'Failed to delete study progress', error: error.message });
     }
   };
+
+  module.exports.getAllProgressForUser = async (req, res) => {
+    try {
+        const userId = req.user._id; // Assuming you're using authentication middleware that adds the user ID to req.user
+        const progressData = await Progress.find({ author: userId });
+        res.json(progressData);
+    } catch (error) {
+        res.status(500).send("Server error");
+    }
+};
   

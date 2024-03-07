@@ -148,6 +148,11 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import '../goals.css';
+import Sidebar from "../components/sidebar";
+// In GoalsPage component file
+
+import Heading from '../components/heading'; // Adjust the path based on your file structure
+
 
 const GoalsPage = () => {
     const [cookies] = useCookies(['token']);
@@ -209,7 +214,8 @@ const GoalsPage = () => {
         }
     };
 
-    const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+    // const [sidebarOpen, setSidebarOpen] = useState(false);
+    const toggleSidebar = () => setSidebarOpen(!sidebarOpen);    
 
     // Function to update the status of a goal (no changes needed here)
     const updateGoalStatus = async (goalId, status) => {
@@ -236,8 +242,10 @@ const GoalsPage = () => {
     return (
         <>
             {/* Sidebar and other UI components */}
+            <div className="burger_menu" onClick={toggleSidebar}>☰</div>
+            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />  
+            <Heading text="Goals" />
             <div className="goals-page">
-                <h2>Goals</h2>
                 <form onSubmit={handleSubmit} className="submit-goal-form">
                     <textarea
                         name="description"

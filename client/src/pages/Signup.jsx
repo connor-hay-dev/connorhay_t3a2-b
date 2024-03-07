@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Heading from '../components/heading';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ const Signup = () => {
 
   return (
     <div className="form_container">
-      <h2>Signup Account</h2>
+      <Heading text="Sign Up" />
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Email</label>

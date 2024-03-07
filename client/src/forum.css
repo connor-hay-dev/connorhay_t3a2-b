@@ -1,8 +1,25 @@
 Forum Page General Styles
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Prevent body scrolling */
+}
+
 .forum-page {
-    max-width: 800px;
+    /* max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px; */
+    padding-top: 10;
+    /* Adjust based on your form's actual height */
+    overflow-y: auto;
+    /* Enable scrolling within this container */
+    height: 100vh;
+    width: 70vw;
+    box-sizing: border-box;
   }
   
   /* Form Styles */
@@ -11,6 +28,7 @@ Forum Page General Styles
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
+    
   }
   
   .post-title-input, .post-content-textarea {
@@ -46,7 +64,12 @@ Forum Page General Styles
   
   /* Posts Display Styles */
   .posts {
+    /* margin-top: 20px; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minmax values as needed */
+    gap: 20px; /* Space between grid items */
     margin-top: 20px;
+    padding: 20px;
   }
   
   .post {

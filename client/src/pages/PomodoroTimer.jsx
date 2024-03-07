@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../pomodoro.css'
+import Heading from '../components/heading';
+import Sidebar from "../components/sidebar";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const Pomodoro = () => {
   const [secondsLeft, setSecondsLeft] = useState(25 * 60);
@@ -32,14 +36,24 @@ const Pomodoro = () => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  return (
+const [sidebarOpen, setSidebarOpen] = useState(false);
+
+const toggleSidebar = () => setSidebarOpen(!sidebarOpen); //new
+
+
+return (
+  <>
+    <div className="burger_menu" onClick={toggleSidebar}>☰</div>
+    <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+    <Heading text="Pomodoro Timer" />
     <div className="pomodoro-container">
-      <h2>Pomodoro Timer</h2>
       <div className="timer-display">{formatTime(secondsLeft)}</div>
       <button className="button" onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>
       <button className="button reset-button" onClick={reset}>Reset</button>
     </div>
-  );
+    <ToastContainer />
+  </>
+);
 };
 
 export default Pomodoro;

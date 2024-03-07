@@ -218,6 +218,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import Sidebar from '../components/sidebar'; // Adjust the import path as necessary
 import "react-toastify/dist/ReactToastify.css";
+import Heading from '../components/heading';
 import '../forum.css';
 
 const ForumPage = () => {
@@ -225,7 +226,7 @@ const ForumPage = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({ title: "", content: ""});
-//   const [sidebarOpen, setSidebarOpen] = useState(false); // new
+
 const [sidebarOpen, setSidebarOpen] = useState(false);
 const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -295,7 +296,7 @@ const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
       <div className="forum-page">
         <div className="burger_menu" onClick={toggleSidebar}>☰</div>
         <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />    
-        <h2>Forum</h2>
+        <Heading text="Forum" />
         <form onSubmit={handleSubmit} className="submit-post-form">
           <input
             type="text"

@@ -22,7 +22,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="sidebar">
           <div className="closebtn" onClick={toggleSidebar}>×</div>
           <a onClick={() => handleNavigation("/home")}>Home</a>
-          <a onClick={() => handleNavigation("localhost:4000/goals")}>Goals</a>
+          <a onClick={() => handleNavigation("/goals")}>Goals</a>
           <a onClick={() => handleNavigation("/pomodoro")}>Pomodoro Timer</a>
           <a onClick={() => handleNavigation("/forum")}>Forum</a>
           <a onClick={Logout}>Logout</a>
