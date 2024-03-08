@@ -9,6 +9,36 @@ body {
     /* Prevent body scrolling */
 }
 
+.burger_menu {
+  position: fixed;
+  top: 20px; /* Adjust based on desired distance from top */
+  left: 20px; /* Adjust based on desired distance from the left edge */
+  z-index: 1001; /* Ensure it's above the sidebar and other content */
+  cursor: pointer; /* Change cursor to pointer to indicate clickable */
+  font-size: 24px; /* Adjust based on your design */
+  color: white; /* Color of the burger icon */
+}
+
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 10vw; /* Adjust width as necessary */
+  height: 100vh;
+  background-color: #333; /* Sidebar background color */
+  z-index: 1000; /* Ensure it appears over other content but under the burger menu icon */
+  overflow-y: auto; /* Enable scrolling inside the menu if necessary */
+  box-sizing: border-box;
+  padding: 20px;
+  color: white;
+  transform: translateX(-100%); /* Hide sidebar off-screen initially */
+  transition: transform 0.3s ease; /* Smooth transition for opening/closing */
+}
+
+.sidebar-container.open {
+  transform: translateX(0); /* Move sidebar into view */
+}
+
 .forum-page {
     /* max-width: 800px;
     margin: 0 auto;

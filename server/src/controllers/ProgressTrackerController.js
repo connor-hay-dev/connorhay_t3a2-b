@@ -83,4 +83,66 @@ module.exports.updateProgress = async (req, res) => {
         res.status(500).send("Server error");
     }
 };
+
+module.exports.getCumulativeWordsStudied = async (req, res) => {
+  try {
+      const userId = req.user._id; // Assuming you're using authentication middleware that adds the user ID to req.user
+      const aggregation = [
+          { $match: { author: userId } }, // Filter records by user
+          { $sort: { date: 1 } }, // Ensure records are in chronological order
+          {
+              $group: {
+                  _id: null,
+                  records: {
+                      $push: {
+                          date: "$date",
+                          wordsStudied: "$wordsStudied",
+                      },
+                  },
+              },
+          },
+          {
+              $project: {
+                  cumulativeWords: {
+                      $reduce: {
+                          input: "$records",
+                          initialValue: { sum: 0, records: [] },
+                          in: {
+                              sum: { $add: ["$$value.sum", "$$this.wordsStudied"] },
+                              records: {
+                                  $concatArrays: [
+                                      "$$value.records",
+                                      [{
+                                          date: "$$this.date",
+                                          cumulativeWordsStudied: { $add: ["$$value.sum", "$$this.wordsStudied"] },
+                                      }],
+                                  ],
+                              },
+                          },
+                      },
+                  },
+              },
+          },
+          {
+              $unwind: "$cumulativeWords.records",
+          },
+          {
+              $replaceRoot: { newRoot: "$cumulativeWords.records" },
+          },
+      ];
+
+      const cumulativeData = await Progress.aggregate(aggregation);
+      res.status(200).json({
+          status: 'success',
+          data: cumulativeData
+      });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({
+          status: 'error',
+          message: 'An error occurred while fetching cumulative progress data',
+          error: error.message
+      });
+  }
+};
   

@@ -1,9 +1,9 @@
-const { Signup, Login } = require("../controllers/authController");
+const { Signup, Login, Logout } = require("../controllers/authController");
 const { createPost, getPosts } = require('../controllers/ForumController');
 const { userVerification } = require("../middleware/authMiddleware");
 const { createGoal } = require("../controllers/GoalController");
 const { getGoals } = require("../controllers/GoalController");
-const { createProgress, getAllProgress, getProgressById, getAllProgressForUser, updateProgress, deleteProgress } = require("../controllers/ProgressTrackerController");
+const { createProgress, getAllProgress, getProgressById, getAllProgressForUser, updateProgress, deleteProgress, getCumulativeWordsStudied } = require("../controllers/ProgressTrackerController");
 // const { createProgress } = require('../controllers/ProgressTrackerController')
 // const pomodoroController = require('../controllers/PomodoroController');
 
@@ -11,6 +11,7 @@ const router = require("express").Router();
 
 router.post("/signup", Signup);
 router.post('/login', Login);
+router.get('./logout', Logout)
 router.post('/', userVerification);
 router.post('/forum', userVerification, createPost);
 router.get('/forum', getPosts);
@@ -31,6 +32,9 @@ router.patch('/progress/:id', userVerification, updateProgress);
 router.delete('/progress/:id', userVerification, deleteProgress);
 
 router.get('/progress', userVerification, getAllProgressForUser);
+
+router.get('/progress', userVerification, getCumulativeWordsStudied);
+
 
 
 

@@ -1,61 +1,60 @@
-/* Container */
 .pomodoro-container {
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    max-width: 350px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f3f4f6;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .pomodoro-container h2 {
-    color: #333;
-    margin-bottom: 30px;
-  }
-  
-  /* Timer display */
-  .timer-display {
-    font-size: 3em;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    color: #e53e3e;
-  }
-  
-  /* Buttons */
-  .button {
-    font-size: 1em;
-    padding: 10px 20px;
-    margin: 5px;
-    color: #fff;
-    background-color: #3182ce;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #63b3ed;
-  }
-  
-  .button:active {
-    background-color: #2b6cb0;
-  }
-  
-  .reset-button {
-    background-color: #e53e3e;
-  }
-  
-  .reset-button:hover {
-    background-color: #fc8181;
-  }
-  
-  .reset-button:active {
-    background-color: #c53030;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  max-width: 500px; /* Increased width */
+  margin: 50px auto;
+  padding: 40px; /* Increased padding for a larger look */
+  background-color: #f3f4f6;
+  border-radius: 15px; /* Slightly more rounded */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pomodoro-container h2 {
+  color: #333;
+  margin-bottom: 40px; /* Increased bottom margin */
+}
+
+/* Timer display */
+.timer-display {
+  font-size: 6em; /* Significantly larger font size */
+  margin-bottom: 30px; /* Increased bottom margin */
+  padding: 20px; /* Increased padding for a larger display */
+  background-color: #fff;
+  border: none;
+  border-radius: 10px; /* More rounded */
+  color: #e53e3e;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Added subtle shadow for depth */
+}
+
+/* Buttons */
+.button {
+  font-size: 1.2em; /* Larger font size */
+  padding: 15px 30px; /* Increased padding for larger buttons */
+  margin: 10px; /* Increased margin for better spacing */
+  color: #fff;
+  background-color: #3182ce;
+  border: none;
+  border-radius: 10px; /* More rounded */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #63b3ed;
+}
+
+.button:active {
+  background-color: #2b6cb0;
+}
+
+.reset-button {
+  background-color: #e53e3e;
+}
+
+.reset-button:hover {
+  background-color: #fc8181;
+}
+
+.reset-button:active {
+  background-color: #c53030;
+}

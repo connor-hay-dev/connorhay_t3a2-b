@@ -1,5 +1,5 @@
 export { default as Login } from './Login';
-export { default as Home } from './Home';
+export { default as HomePage } from './Home';
 export { default as Signup } from './Signup';
 export { default as ForumPage } from './Forum';
 export { default as Goals } from './Goals';

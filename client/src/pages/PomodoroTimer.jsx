@@ -36,16 +36,10 @@ const Pomodoro = () => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-const [sidebarOpen, setSidebarOpen] = useState(false);
-
-const toggleSidebar = () => setSidebarOpen(!sidebarOpen); //new
-
-
 return (
   <>
-    <div className="burger_menu" onClick={toggleSidebar}>☰</div>
-    <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-    <Heading text="Pomodoro Timer" />
+    <Sidebar />
+    <Heading text="Pomodoro Timer"/>
     <div className="pomodoro-container">
       <div className="timer-display">{formatTime(secondsLeft)}</div>
       <button className="button" onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>

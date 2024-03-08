@@ -293,10 +293,9 @@ const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
     <>
+      <Sidebar />
+      <Heading text="Forum" />
       <div className="forum-page">
-        <div className="burger_menu" onClick={toggleSidebar}>☰</div>
-        <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />    
-        <Heading text="Forum" />
         <form onSubmit={handleSubmit} className="submit-post-form">
           <input
             type="text"
