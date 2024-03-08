@@ -81,6 +81,7 @@ const GoalsPage = () => {
             });
             fetchGoals(); // Refresh goals after status update
         } catch (error) {
+            console.log(error.message)
             toast.error("Failed to update goal status.", {
                 position: "bottom-left",
                 autoClose: 5000,
