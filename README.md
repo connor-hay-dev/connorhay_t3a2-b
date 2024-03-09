@@ -125,3 +125,9 @@ A platform for users to start IELTS-related discussions, share tips, and build a
 
 ### R11. Link to repo:
 https://github.com/connor-hay-dev/connorhay_t3a2-b
+
+### R12. Production Testing:
+
+![](Resources/production_testing_1.png)
+![](Resources/production_testing_2.png)
+![](Resources/production_testing_3.png)
