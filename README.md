@@ -10,11 +10,6 @@ I also tried my best to deploy the app with Heroku and nelify, but my github stu
 
 However, I put so much love and energy and days off work into this project, I hope you like it!
 
-You can create your own account or use my test account:
-
-email: connor@connor.com
-password: connorsecure
-
 If you make your own account, you wont have goals because you'll need to make some! :)
 
 ### Purpose:
