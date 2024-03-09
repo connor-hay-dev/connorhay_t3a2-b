@@ -337,7 +337,7 @@ const ForumPage = () => {
             <div key={post._id} className="post">
               <h3>{post.title}</h3>
               <p>{post.content}</p>
-              <p>By: {post.authorName}</p>
+              <p>Author: {post.author}</p>
               <button 
                   onClick={() => deletePost(post._id)}
                   className="delete-goal-button"

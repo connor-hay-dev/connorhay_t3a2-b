@@ -93,7 +93,7 @@ const HomePage = () => {
             <div className="home-page">
                 <div className="welcome-message">
                     <h2>Hello, welcome back!</h2>
-                    <p>We're glad to see you again. Check out your goals or add new ones to stay on track!</p>
+                    <p>We're glad to see you again. Please navigate to your desired page with the hamburger menu.</p>
                 </div>
             </div>
         </>

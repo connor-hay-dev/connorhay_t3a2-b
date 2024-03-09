@@ -77,8 +77,7 @@ module.exports.createPost = async (req, res) => {
 
 module.exports.getPosts = async (req, res) => {
     try {
-      // Fetch all posts without populating any author information
-      const posts = await Post.find().lean(); // .lean() for better performance
+      const posts = await Post.find().lean();
       res.status(200).json(posts);
     } catch (error) {
       console.error(error);
