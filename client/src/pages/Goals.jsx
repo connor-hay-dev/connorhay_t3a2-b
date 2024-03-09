@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import '../goals.css';
 import Sidebar from "../components/sidebar";
-import Heading from '../components/heading'; // Adjust the path based on your file structure
+import Heading from '../components/heading'; 
 
 const GoalsPage = () => {
     const [cookies] = useCookies(['token']);
@@ -57,8 +57,8 @@ const GoalsPage = () => {
                     position: "top-center",
                     autoClose: 5000,
                 });
-                fetchGoals(); // Refresh goals after adding
-                setNewGoal({ description: "", details: "", endDate: "" }); // Reset form
+                fetchGoals(); 
+                setNewGoal({ description: "", details: "", endDate: "" });
             } catch (error) {
                 toast.error("Failed to add goal.", {
                     position: "bottom-left",
@@ -79,7 +79,7 @@ const GoalsPage = () => {
                 position: "top-center",
                 autoClose: 5000,
             });
-            fetchGoals(); // Refresh goals after status update
+            fetchGoals();
         } catch (error) {
             console.log(error.message)
             toast.error("Failed to update goal status.", {

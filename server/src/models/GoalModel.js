@@ -31,7 +31,7 @@ const goalSchema = new Schema({
     trim: true
   }
 }, {
-  timestamps: true, // Adds createdAt and updatedAt timestamps automatically
+  timestamps: true, 
 });
 
 const Goal = mongoose.model('Goals', goalSchema);

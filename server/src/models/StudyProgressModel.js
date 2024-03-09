@@ -31,7 +31,7 @@ const studyProgressSchema = new Schema({
     default: Date.now
   }
 }, {
-  timestamps: true, // Adds createdAt and updatedAt timestamps automatically
+  timestamps: true
 });
 
 const Progress = mongoose.model('StudyProgress', studyProgressSchema);
