@@ -282,11 +282,35 @@ const ForumPage = () => {
     }
   };
 
+  const deletePost = async (postId) => {
+    try {
+        await axios.delete(`http://localhost:4000/forum/${postId}`, {
+            headers: {
+                Authorization: `Bearer ${cookies.token}`,
+            },
+            withCredentials: true,
+        });
+        toast.success('Post deleted successfully!', {
+            position: 'top-center',
+            autoClose: 5000,
+        });
+        fetchPosts(); // Refresh posts after deletion
+    } catch (error) {
+        console.log(error.message);
+        toast.error('Failed to delete post.', {
+            position: 'bottom-left',
+            autoClose: 5000,
+        });
+    }
+};
+
+  
+
 
   return (
     <>
       <Sidebar />
-      <Heading text="Forum" />
+      <Heading text="Notice Board" />
       <div className="forum-page">
         <form onSubmit={handleSubmit} className="submit-post-form">
           <input
@@ -314,6 +338,12 @@ const ForumPage = () => {
               <h3>{post.title}</h3>
               <p>{post.content}</p>
               <p>By: {post.authorName}</p>
+              <button 
+                  onClick={() => deletePost(post._id)}
+                  className="delete-goal-button"
+                >
+                Delete
+              </button>
             </div>
           ))}
         </div>

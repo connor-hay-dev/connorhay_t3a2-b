@@ -34,11 +34,21 @@ module.exports.createGoal = async (req, res) => {
 };
 
 // Fetch all Goals
+// module.exports.getGoals = async (req, res) => {
+//     try {
+//         // Adjust 'Author' to 'author' to match schema if needed
+//         // If 'Author' in your schema is intentional, ensure consistency across your application
+//         const goals = await Goal.find().lean().populate('author', 'username'); // Assuming 'username' is a field in your User model
+//         res.status(200).json(goals);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ message: 'Failed to fetch goals.' });
+//     }
+// };
+
 module.exports.getGoals = async (req, res) => {
     try {
-        // Adjust 'Author' to 'author' to match schema if needed
-        // If 'Author' in your schema is intentional, ensure consistency across your application
-        const goals = await Goal.find().lean().populate('author', 'username'); // Assuming 'username' is a field in your User model
+        const goals = await Goal.find({ author: req.user._id }).lean().populate('author', 'username'); // Assuming 'username' is a field in your User model
         res.status(200).json(goals);
     } catch (error) {
         console.error(error);

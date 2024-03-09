@@ -88,7 +88,7 @@ const Sidebar = () => {
         <ul>
           <li><a href="/home">Home</a></li>
           <li><a href="/goals">Goals</a></li>
-          <li><a href="/forum">Forum</a></li>
+          <li><a href="/forum">Notice Board</a></li>
           <li><a href="/pomodoro">Pomodoro Timer</a></li>
           {/* <li><a href="/logout">Logout</a></li> */}
           <button onClick={handleLogout}>Logout</button>

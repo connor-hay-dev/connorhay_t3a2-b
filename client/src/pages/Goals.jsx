@@ -148,26 +148,9 @@ const GoalsPage = () => {
                     {goals.map((goal) => (
                         <div key={goal._id} className="goal">
                             <p>{goal.description}</p>
-                            <p>{goal.endDate.split('T')[0]}</p>
+                            <p>{goal.details}</p>
+                            <p>Due by: {goal.endDate.split('T')[0]}</p>
                             <div className="goal-actions">
-                            {/* <button 
-                                onClick={() => updateGoalStatus(goal._id, 'pending')}
-                                className={`goal-status-button ${goal.status === 'pending' ? 'active' : ''}`}
-                            >
-                                Pending
-                            </button>
-                            <button 
-                                onClick={() => updateGoalStatus(goal._id, 'in progress')}
-                                className={`goal-status-button ${goal.status === 'in progress' ? 'active' : ''}`}
-                            >
-                                In Progress
-                            </button>
-                            <button 
-                                onClick={() => updateGoalStatus(goal._id, 'completed')}
-                                className={`goal-status-button ${goal.status === 'completed' ? 'active' : ''}`}
-                            >
-                                Completed
-                            </button> */}
                             <button 
                                 onClick={() => updateGoalStatus(goal._id, 'pending')}
                                 className={`goal-status-button ${goal.status === 'pending' ? 'status-pending' : ''}`}

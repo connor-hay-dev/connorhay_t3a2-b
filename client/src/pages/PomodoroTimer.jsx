@@ -40,6 +40,7 @@ return (
   <>
     <Sidebar />
     <Heading text="Pomodoro Timer"/>
+    <h4 className='instructions'>Use this timer to pace your study. Take a 5 minute break when the timer runs out!</h4>
     <div className="pomodoro-container">
       <div className="timer-display">{formatTime(secondsLeft)}</div>
       <button className="button" onClick={toggle}>{isActive ? 'Pause' : 'Start'}</button>

@@ -16,14 +16,6 @@ const postSchema = new Schema({
     type: String,
     required: true
   },
-  // comments: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Comment'
-  // }],
-  // reactions: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Reaction'
-  // }],
   createdAt: {
     type: Date,
     default: Date.now

@@ -1,4 +1,5 @@
 const Post = require('../models/ForumModel'); // Adjust the path as necessary
+// const Comment = require('../models/ForumModel')
 const User = require('../models/UserModel');
 // // module.exports.createPost = async (req, res) => {
 // //   try {
@@ -84,3 +85,173 @@ module.exports.getPosts = async (req, res) => {
       res.status(500).json({ message: 'Failed to fetch posts.' });
     }
 };
+
+module.exports.deletePost = async (req, res) => {
+  try {
+      const postId = req.params.id; // Assuming you're passing the post ID as a URL parameter
+
+      // Find the post to ensure it exists
+      const post = await Post.findById(postId);
+      if (!post) {
+          return res.status(404).json({ message: 'Post not found.' });
+      }
+
+      // Assuming `requireAuth` middleware adds `user` to `req`
+      // Check if the current user is the author of the post or has other permissions to delete it
+      if (post.author.toString() !== req.user._id.toString()) {
+          return res.status(401).json({ message: 'User not authorized to delete this post.' });
+      }
+
+      // If the check passes, delete the post
+      await Post.findByIdAndDelete(postId);
+
+      res.status(200).json({ message: 'Post deleted successfully' });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Failed to delete post.' });
+  }
+};
+
+
+
+
+
+// Create a comment
+// module.exports.createComment = async (req, res) => {
+//   try {
+//     const { postId, content } = req.body;
+//     if (!postId || !content) {
+//       return res.status(400).json({ message: 'Post ID and content are required.' });
+//     }
+
+//     const comment = new Comment({
+//       postId,
+//       userId: req.user._id,
+//       content,
+//     });
+//     await comment.save();
+
+//     // Optionally, update the Post document to include this comment's ID
+//     await Post.findByIdAndUpdate(postId, { $push: { comments: comment._id } });
+
+//     res.status(201).json({ message: "Comment added successfully", comment });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'An error occurred' });
+//   }
+// };
+
+// module.exports.createComment = async (req, res) => {
+//   try {
+//     // Change from req.body to req.params
+//     const { postId } = req.params;
+//     const { content } = req.body;
+//     if (!content) {
+//       return res.status(400).json({ message: 'Content is required.' });
+//     }
+
+//     const comment = new Comment({
+//       postId,
+//       userId: req.user._id,
+//       content,
+//     });
+//     await comment.save();
+
+//     // Optionally, update the Post document to include this comment's ID
+//     await Post.findByIdAndUpdate(postId, { $push: { comments: comment._id } });
+
+//     res.status(201).json({ message: "Comment added successfully", comment });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'An error occurred' });
+//   }
+// };
+
+
+// Fetch comments for a post
+// module.exports.getComments = async (req, res) => {
+//   try {
+//     const { postId } = req.params;
+//     const comments = await Comment.find({ postId }).populate('userId', 'username'); // Adjust 'username' based on your User model
+//     res.status(200).json(comments);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Failed to fetch comments.' });
+//   }
+// };
+
+// Delete a comment
+// module.exports.deleteComment = async (req, res) => {
+//   try {
+//     const { commentId } = req.params;
+//     const comment = await Comment.findById(commentId);
+
+//     if (!comment) {
+//       return res.status(404).json({ message: 'Comment not found.' });
+//     }
+
+//     // Verify the user attempting to delete the comment is the one who posted it
+//     if (comment.userId.toString() !== req.user._id.toString()) {
+//       return res.status(401).json({ message: 'User not authorized.' });
+//     }
+
+//     await Comment.findByIdAndRemove(commentId);
+//     res.status(200).json({ message: 'Comment deleted successfully.' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Failed to delete comment.' });
+//   }
+// };
+
+// module.exports.deleteComment = async (req, res) => {
+//   try {
+//       const commentId = req.params.id; // Adjust to match the URL parameter used for comments
+
+//       // Find the comment to ensure it exists and to check if the current user is the author
+//       const comment = await Comment.findById(commentId);
+//       if (!comment) {
+//           return res.status(404).json({ message: 'Comment not found.' });
+//       }
+
+//       // Assuming `requireAuth` middleware adds `user` to `req`
+//       // Check if the current user is the author of the comment
+//       if (comment.userId.toString() !== req.user._id.toString()) {
+//           return res.status(401).json({ message: 'User not authorized to delete this comment.' });
+//       }
+
+//       // If the check passes, delete the comment
+//       await Comment.findByIdAndDelete(commentId);
+
+//       res.status(200).json({ message: 'Comment deleted successfully' });
+//   } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ message: 'Failed to delete comment.' });
+//   }
+// };
+
+// module.exports.deleteComment = async (req, res) => {
+//   try {
+//     // Extract 'id' from req.params, assuming the route is defined as /comments/:id
+//     const { id: commentId } = req.params;
+
+//     // Find the comment to ensure it exists and to check if the current user is the author
+//     const comment = await Comment.findById(commentId);
+//     if (!comment) {
+//       return res.status(404).json({ message: 'Comment not found.' });
+//     }
+
+//     // Assuming `requireAuth` middleware adds `user` to `req`
+//     // Check if the current user is the author of the comment
+//     if (comment.userId.toString() !== req.user._id.toString()) {
+//       return res.status(401).json({ message: 'User not authorized to delete this comment.' });
+//     }
+
+//     // If the check passes, delete the comment
+//     await Comment.findByIdAndDelete(commentId);
+
+//     res.status(200).json({ message: 'Comment deleted successfully' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Failed to delete comment.' });
+//   }
+// };

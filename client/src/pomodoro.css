@@ -58,3 +58,6 @@
 .reset-button:active {
   background-color: #c53030;
 }
+.instructions {
+  padding-top: 5%;
+}

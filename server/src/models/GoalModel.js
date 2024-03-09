@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const goalSchema = new Schema({
     author: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
