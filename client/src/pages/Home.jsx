@@ -89,7 +89,7 @@ const HomePage = () => {
     return (
         <>
             <Sidebar />
-            <Heading text="Goals"/>
+            <Heading text="Home"/>
             <div className="home-page">
                 <div className="welcome-message">
                     <h2>Hello, welcome back!</h2>
