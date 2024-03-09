@@ -133,17 +133,31 @@ body {
     margin-top: 10px;
 }
 
-.goal-status.pending {
+/* .goal-status.pending {
     background-color: #f0ad4e;
-    /* Orange for pending */
 }
 
 .goal-status.in-progress {
     background-color: #5bc0de;
-    /* Light blue for in progress */
+  
 }
 
 .goal-status.completed {
     background-color: #5cb85c;
-    /* Green for completed */
+} */
+
+.status-pending {
+    background-color: red;
+    /* Other styles */
 }
+
+.status-in-progress {
+    background-color: orange;
+    /* Other styles */
+}
+
+.status-completed {
+    background-color: green;
+    /* Other styles */
+}
+

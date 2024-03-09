@@ -69,7 +69,7 @@ const GoalsPage = () => {
 
     const updateGoalStatus = async (goalId, status) => {
         try {
-            await axios.patch(`http://localhost:4000/goals/${goalId}`, { status }, {
+            await axios.patch(`http://localhost:4000/goals/${goalId}/status`, { status }, {
                 headers: {
                     Authorization: `Bearer ${cookies.token}`
                 },
@@ -148,8 +148,9 @@ const GoalsPage = () => {
                     {goals.map((goal) => (
                         <div key={goal._id} className="goal">
                             <p>{goal.description}</p>
+                            <p>{goal.endDate.split('T')[0]}</p>
                             <div className="goal-actions">
-                            <button 
+                            {/* <button 
                                 onClick={() => updateGoalStatus(goal._id, 'pending')}
                                 className={`goal-status-button ${goal.status === 'pending' ? 'active' : ''}`}
                             >
@@ -164,6 +165,24 @@ const GoalsPage = () => {
                             <button 
                                 onClick={() => updateGoalStatus(goal._id, 'completed')}
                                 className={`goal-status-button ${goal.status === 'completed' ? 'active' : ''}`}
+                            >
+                                Completed
+                            </button> */}
+                            <button 
+                                onClick={() => updateGoalStatus(goal._id, 'pending')}
+                                className={`goal-status-button ${goal.status === 'pending' ? 'status-pending' : ''}`}
+                            >
+                                Pending
+                            </button>
+                            <button 
+                                onClick={() => updateGoalStatus(goal._id, 'in progress')}
+                                className={`goal-status-button ${goal.status === 'in progress' ? 'status-in-progress' : ''}`}
+                            >
+                                In Progress
+                            </button>
+                            <button 
+                                onClick={() => updateGoalStatus(goal._id, 'completed')}
+                                className={`goal-status-button ${goal.status === 'completed' ? 'status-completed' : ''}`}
                             >
                                 Completed
                             </button>

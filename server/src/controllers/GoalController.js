@@ -74,3 +74,36 @@ module.exports.deleteGoal = async (req, res) => {
         res.status(500).json({ message: 'Failed to delete goal.' });
     }
 };
+
+// Update a goal's status
+module.exports.updateGoalStatus = async (req, res) => {
+    try {
+        const goalId = req.params.id; // The ID of the goal to update
+        const { status } = req.body; // The new status from the request body
+
+        // Validate the status
+        if (!['pending', 'in progress', 'completed'].includes(status)) {
+            return res.status(400).json({ message: 'Invalid status.' });
+        }
+
+        // Find the goal to ensure it exists and to check if the current user is the author
+        const goal = await Goal.findById(goalId);
+        if (!goal) {
+            return res.status(404).json({ message: 'Goal not found.' });
+        }
+
+        // Check if the current user is the author of the goal
+        if (goal.author.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ message: 'User not authorized to update this goal.' });
+        }
+
+        // If checks pass, update the goal's status
+        goal.status = status;
+        await goal.save();
+
+        res.status(200).json({ message: 'Goal status updated successfully', goal });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Failed to update goal status.' });
+    }
+};
