@@ -227,8 +227,6 @@ const ForumPage = () => {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({ title: "", content: ""});
 
-const [sidebarOpen, setSidebarOpen] = useState(false);
-const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   useEffect(() => {
     // Redirect to login if no token is found
@@ -283,13 +281,7 @@ const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
       });
     }
   };
-//   const toggleSidebar = () => setSidebarOpen(!sidebarOpen); //new
-//   const handleNavigation = (path) => {
-//   // Close the sidebar
-//   toggleSidebar();
-//   // Navigate to the path
-//   navigate(path);
-// };
+
 
   return (
     <>
@@ -321,7 +313,7 @@ const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
             <div key={post._id} className="post">
               <h3>{post.title}</h3>
               <p>{post.content}</p>
-              <p>By: {post.author}</p>
+              <p>By: {post.authorName}</p>
             </div>
           ))}
         </div>

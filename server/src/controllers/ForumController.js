@@ -46,7 +46,7 @@ module.exports.createPost = async (req, res) => {
       // Now that we have the user, we can create the post with the author's name included
       const post = new Post({
         author: req.user._id, // Continue to set the author ObjectId
-        authorName: user.username, // Include the author's name as a new field
+        authorName: req.user.username, // Include the author's name as a new field
         title,
         content
       });

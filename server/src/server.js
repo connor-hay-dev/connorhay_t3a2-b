@@ -8,8 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", ], // [, netlify address]
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: [process.env.ORIGIN_URL], // [, netlify address]
     credentials: true,
   })
 );
@@ -19,10 +18,6 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use("/", authRoute);
-
-app.get('/hello-world', (req, res) => {
-  res.send('Hello World!');
-});
 
 module.exports = app;
 

@@ -11,7 +11,7 @@ const router = require("express").Router();
 
 router.post("/signup", Signup);
 router.post('/login', Login);
-router.get('./logout', Logout)
+router.get('/logout', Logout)
 router.post('/', userVerification);
 router.post('/forum', userVerification, createPost);
 router.get('/forum', getPosts);
