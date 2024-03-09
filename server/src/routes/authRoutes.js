@@ -2,7 +2,7 @@ const { Signup, Login, Logout } = require("../controllers/authController");
 const { createPost, getPosts } = require('../controllers/ForumController');
 const { userVerification } = require("../middleware/authMiddleware");
 const { createGoal } = require("../controllers/GoalController"); // import status setting
-const { getGoals } = require("../controllers/GoalController");
+const { getGoals, deleteGoal } = require("../controllers/GoalController");
 const { createProgress, getAllProgress, getProgressById, getAllProgressForUser, updateProgress, deleteProgress, getCumulativeWordsStudied } = require("../controllers/ProgressTrackerController");
 // const { createProgress } = require('../controllers/ProgressTrackerController')
 // const pomodoroController = require('../controllers/PomodoroController');
@@ -18,6 +18,7 @@ router.get('/forum', getPosts);
 router.post('/goals', userVerification, createGoal);
 router.get('/goals', userVerification, getGoals);
 router.patch('/goals/:id', userVerification, )
+router.delete('/goals/:id', userVerification, deleteGoal);
 router.post('/progress', userVerification, createProgress);
 // Create a new study progress record
 // Get all study progress records for the authenticated user

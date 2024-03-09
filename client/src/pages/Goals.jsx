@@ -89,6 +89,28 @@ const GoalsPage = () => {
         }
     };
 
+    const deleteGoal = async (goalId) => {
+        try {
+            await axios.delete(`http://localhost:4000/goals/${goalId}`, {
+                headers: {
+                    Authorization: `Bearer ${cookies.token}`
+                },
+                withCredentials: true
+            });
+            toast.success("Goal deleted successfully!", {
+                position: "top-center",
+                autoClose: 5000,
+            });
+            fetchGoals(); // Refresh goals after deletion
+        } catch (error) {
+            console.log(error.message)
+            toast.error("Failed to delete goal.", {
+                position: "bottom-left",
+                autoClose: 5000,
+            });
+        }
+    };
+
     return (
         <>
             <Sidebar />
@@ -145,6 +167,12 @@ const GoalsPage = () => {
                             >
                                 Completed
                             </button>
+                            <button 
+                                onClick={() => deleteGoal(goal._id)}
+                                className="delete-goal-button"
+                            >
+                            Delete
+                    </button>
                         </div>
                         </div>     
                     ))}
